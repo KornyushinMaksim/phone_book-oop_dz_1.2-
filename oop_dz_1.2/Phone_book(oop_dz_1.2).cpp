@@ -48,12 +48,13 @@ int func_delete_contact() {
 	return num;
 }
 
-string func_search_contact() {
+char* func_search_contact() {
 	bool flag = true;
 	char str[] = { "выход" };
 	while (flag) {
 		cout << "Введите имя/фамилию для поиска или \"выход\": ";
 		char search[30];
+		cin.get();
 		cin.getline(search, 30);
 		if (strstr(str, search)) {
 			flag = false;
@@ -64,9 +65,12 @@ string func_search_contact() {
 	}
 }
 
-void _interface(Phone_book& cont, Contact& pers) {
+
+
+void _interface(Phone_book& cont/*, Phone_book& pers*/) {
 	bool flag = true;
 	while (flag) {
+		system("cls");
 		cout << "1. Добавление контакта\n2. Удалить\n3. Показать всех\n4. Поиск\n5. Сохранить\n6. Завершить\n";
 		int key;
 		cin >> key;
@@ -79,11 +83,13 @@ void _interface(Phone_book& cont, Contact& pers) {
 			break;
 		case 3:
 			cout << cont.to_string_contacts();
+			system("pause");
 			break;
 		case 4:
-			cout << cont.search_contact(func_search_contact(), pers);
+			cout << cont.search_contact(func_search_contact()/*, pers*/) << endl;
 			break;
 		case 5:
+			cont.save_to_file();
 			break;
 		case 6:
 			flag = false;
@@ -97,5 +103,5 @@ int main()
 	system("chcp 1251 >nul");
 	Contact pers;
 	Phone_book cont;
-	_interface(cont, pers);
+	_interface(cont/*, pers*/);
 }

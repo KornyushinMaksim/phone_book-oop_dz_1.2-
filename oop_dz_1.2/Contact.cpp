@@ -90,7 +90,7 @@ string Contact::to_string()
 	s.append(mobilephone);
 	s.append(" ");
 	s.append(info);
-	s.append(" ");
+	s.append("\n");
 	return s;
 }
 

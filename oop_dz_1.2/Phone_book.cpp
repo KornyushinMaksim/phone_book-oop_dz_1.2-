@@ -27,15 +27,15 @@ void Phone_book::delete_contact(int num)
 	size--;
 }
 
-string Phone_book::search_contact(string str, Contact& pers)
+string Phone_book::search_contact(char* str/*, Phone_book& pers*/)
 {
 	for (int i = 0; i < size; i++) {
-		if (pers.set_name() == str || pers.set_lastname() == str) {
-			return pers.to_string();
-		}
-		else {
+		if (arr_contacts[i].set_name() == str || arr_contacts[i].set_lastname() == str) {
 			string s = "Совпадений нет...";
 			return s;
+		}
+		else {
+			return arr_contacts[i].to_string();
 		}
 	}
 }
@@ -48,5 +48,20 @@ string Phone_book::to_string_contacts()
 		s.append("\n");
 	}
 	return s;
+}
+
+void Phone_book::save_to_file()
+{
+	fstream fout;
+	path = ("Save.txt");
+	fout.open(path);
+	if (fout.is_open()) {
+		for (int i = 0; i < size; i++) {
+			arr_contacts[i].to_string();
+		}
+		cout << "file saved";
+	}
+	fout.close();
+	system("pause");
 }
 
