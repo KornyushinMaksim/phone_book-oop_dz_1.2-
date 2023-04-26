@@ -80,17 +80,40 @@ string Contact::to_string()
 {
 	string s = "";
 	s.append(name);
-	s.append(" ");
+	s.append("\n");
 	s.append(lastname);
-	s.append(" ");
+	s.append("\n");
 	s.append(homephone);
-	s.append(" ");
+	s.append("\n");
 	s.append(workphone);
-	s.append(" ");
+	s.append("\n");
 	s.append(mobilephone);
-	s.append(" ");
+	s.append("\n");
 	s.append(info);
 	s.append("\n");
 	return s;
+}
+
+Contact::~Contact()
+{
+	if (!name) {
+		delete[] name;
+	}
+	if (!lastname) {
+		delete[] lastname;
+	}
+	if (!homephone) {
+		delete[] homephone;
+	}
+	if (!workphone) {
+		delete[] workphone;
+	}
+	if (!mobilephone) {
+		delete[] mobilephone;
+	}
+	if (!info) {
+		delete[] info;
+	}
+	cout << "диструктор контакт сработал" << this << endl;
 }
 

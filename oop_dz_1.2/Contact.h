@@ -12,7 +12,6 @@ private:
 	char* workphone;
 	char* mobilephone;
 	char* info;
-	//int size = 0;
 public:
 
 	inline void _if_for_construstot(char* name, const char* _name) {
@@ -35,10 +34,13 @@ public:
 		_if_for_construstot(workphone, _workphone);
 		_if_for_construstot(mobilephone, _mobilephone);
 		_if_for_construstot(info, _info);
+		cout << "конструктор контакт: " << this << endl;
 	}
 
-	Contact() : Contact{ NULL, NULL,  NULL,  NULL, NULL,  NULL } {};
-
+	Contact() : Contact{ NULL, NULL,  NULL,  NULL, NULL,  NULL } {
+		cout << "конструктор по умолчанию контакт: " << this << endl;
+	};
+		 
 	char* set_name();
 	void get_name(char* _name);
 
@@ -59,4 +61,5 @@ public:
 
 	string to_string();
 
+	~Contact();
 };

@@ -8,12 +8,27 @@ class Phone_book
 private:
 	Contact* arr_contacts;
 	int size = 0;
-	string path;
+	string path = ("Save.txt");
 public:
+	Phone_book() {
+		cout << "конструктор по умоланию книга: " << this << endl;
+	}
+
+	Phone_book(Phone_book& other) {
+		size = other.size;
+		for (int i = 0; i < size; i++) {
+			arr_contacts[i] = other.arr_contacts[i];
+		}
+		cout << "конструктор копир книга: " << this << endl;
+	}
+
+
 	void add_contact(Contact contact);
 	void delete_contact(int num);
-	string search_contact(char* str/*, Phone_book& pers*/);
+	string search_contact(char* str);
 	string to_string_contacts();
-	void save_to_file();
+	void save_to_file(string _path);
+
+	~Phone_book();
 };
 

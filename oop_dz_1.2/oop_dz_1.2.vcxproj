@@ -128,12 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File_open.cpp" />
     <ClCompile Include="Phone_book%28oop_dz_1.2%29.cpp" />
     <ClCompile Include="Contact.cpp" />
     <ClCompile Include="Phone_book.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h" />
+    <ClInclude Include="File_open.h" />
     <ClInclude Include="Phone_book.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

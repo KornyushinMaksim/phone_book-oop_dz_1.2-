@@ -17,13 +17,14 @@
 #include <string.h>
 #include "Contact.h"
 #include "Phone_book.h"
+#include "File_open.h"
 
 Contact func_add_contact() {
 	char name[30];
 	char lastname[30];
-	char homephone[11];
-	char workphone[11];
-	char mobilephone[11];
+	char homephone[12];
+	char workphone[12];
+	char mobilephone[12];
 	char info[100];
 	cin.get();			//bag
 	cout << "Добавление контакта\nИмя: ";
@@ -31,11 +32,11 @@ Contact func_add_contact() {
 	cout << "Фамилия: ";
 	cin.getline(lastname, 30);
 	cout << "Домашний телефон: ";
-	cin.getline(homephone, 11);
+	cin.getline(homephone, 12);
 	cout << "Рабочий телефон: ";
-	cin.getline(workphone, 11);
+	cin.getline(workphone, 12);
 	cout << "Мобильный телефон: ";
-	cin.getline(mobilephone, 11);
+	cin.getline(mobilephone, 12);
 	cout << "Инфо: ";
 	cin.getline(info, 100);
 	return Contact(name, lastname, homephone, workphone, mobilephone, info);
@@ -65,31 +66,39 @@ char* func_search_contact() {
 	}
 }
 
+//Contact read_file() {
+//	File_open open;
+//	return open.open_file("Save.txt");
+//}
 
-
-void _interface(Phone_book& cont/*, Phone_book& pers*/) {
+void _interface(/*Phone_book& pers, Contact cont*/) {
+	//cont.add_contact(open.open_file("Save.txt"));
+	//Phone_book cont_copy(pers);
+	Phone_book pers;
+	Contact cont;
+	//cont_copy.add_contact(cont);
 	bool flag = true;
 	while (flag) {
-		system("cls");
+		//system("cls");
 		cout << "1. Добавление контакта\n2. Удалить\n3. Показать всех\n4. Поиск\n5. Сохранить\n6. Завершить\n";
 		int key;
 		cin >> key;
 		switch (key) {
 		case 1:
-			cont.add_contact(func_add_contact());
+			pers.add_contact(func_add_contact());
 			break;
 		case 2:
-			cont.delete_contact(func_delete_contact());
+			pers.delete_contact(func_delete_contact());
 			break;
 		case 3:
-			cout << cont.to_string_contacts();
+			cout << pers.to_string_contacts();
 			system("pause");
 			break;
 		case 4:
-			cout << cont.search_contact(func_search_contact()/*, pers*/) << endl;
+			cout << pers.search_contact(func_search_contact()/*, pers*/) << endl;
 			break;
 		case 5:
-			cont.save_to_file();
+			pers.save_to_file("Save.txt");
 			break;
 		case 6:
 			flag = false;
@@ -101,7 +110,12 @@ void _interface(Phone_book& cont/*, Phone_book& pers*/) {
 int main()
 {
 	system("chcp 1251 >nul");
-	Contact pers;
-	Phone_book cont;
-	_interface(cont/*, pers*/);
+	//Contact cont;
+	////Contact(pers);
+	//Phone_book pers;
+	File_open open;
+	open.open_file("Save.txt");
+
+	
+	_interface(/*pers, cont*/);
 }

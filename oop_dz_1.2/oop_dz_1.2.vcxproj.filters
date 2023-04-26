@@ -24,12 +24,18 @@
     <ClCompile Include="Phone_book.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="File_open.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Phone_book.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="File_open.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
