@@ -37,9 +37,28 @@ public:
 		cout << "конструктор контакт: " << this << endl;
 	}
 
-	Contact() : Contact{ NULL, NULL,  NULL,  NULL, NULL,  NULL } {
-		cout << "конструктор по умолчанию контакт: " << this << endl;
-	};
+	Contact() {};
+
+	Contact(const Contact& other) {
+		if (other.name) {
+			strcpy_s(name, strlen(other.name) + 1, other.name);
+		}
+		if (other.lastname) {
+			strcpy_s(lastname, strlen(other.lastname) + 1, other.lastname);
+		}
+		if (other.homephone) {
+			strcpy_s(homephone, strlen(other.homephone) + 1, other.homephone);
+		}
+		if (other.workphone) {
+			strcpy_s(workphone, strlen(other.workphone) + 1, other.workphone);
+		}
+		if (other.mobilephone) {
+			strcpy_s(mobilephone, strlen(other.mobilephone) + 1, other.mobilephone);
+		}
+		if (other.info) {
+			strcpy_s(info, strlen(other.info) + 1, other.info);
+		}
+	}
 		 
 	char* set_name();
 	void get_name(char* _name);
